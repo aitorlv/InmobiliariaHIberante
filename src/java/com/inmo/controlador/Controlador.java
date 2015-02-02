@@ -111,7 +111,7 @@ public class Controlador extends HttpServlet {
                 }else if(target.equals("imagen") && op.equals("delete") && action.equals("op")){
                 forward=false;
                 ModeloImagen.delete(request.getParameter("id"));
-                destino="control?target=imagen&op=select&action=view";
+                destino="control?target=imagen&op=select&action=view&id="+request.getParameter("idinmueble");
                 }else if(target.equals("imagen") && op.equals("insert") && action.equals("view")){
                 forward=true;
                 destino="WEB-INF/imagenes/insert.jsp";

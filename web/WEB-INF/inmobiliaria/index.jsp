@@ -15,8 +15,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
-        <h2><a href="control?target=inmueble&op=insert&action=view">insertar inmueble</a></h2>
+        <header>
+             <h1>Inmobiliaria</h1>
+            <a class="enlaceInicio" href="control?target=inmueble&op=insert&action=view">insertar inmueble</a>
+        </header>
+      
         <div class="tablaInmueble">
         <table>
             <tbody>
