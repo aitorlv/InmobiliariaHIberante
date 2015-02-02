@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-ene-2015 14:13:45 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.inmo.hibernate.Inmueble" table="inmueble" catalog="inmobiliariahibernate">
+        <id name="idInmbule" type="java.lang.Integer">
+            <column name="IdInmbule" />
+            <generator class="identity" />
+        </id>
+        <property name="idAndroid" type="int">
+            <column name="IdAndroid" not-null="true" />
+        </property>
+        <property name="localidad" type="string">
+            <column name="Localidad" length="50" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="50" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="Tipo" length="10" not-null="true" />
+        </property>
+        <property name="precio" type="string">
+            <column name="Precio" length="10" not-null="true" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="Usuario" length="30" not-null="true" />
+        </property>
+        <set name="imagens" table="imagen" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdInmueble" not-null="true" />
+            </key>
+            <one-to-many class="com.inmo.hibernate.Imagen" />
+        </set>
+    </class>
+</hibernate-mapping>
