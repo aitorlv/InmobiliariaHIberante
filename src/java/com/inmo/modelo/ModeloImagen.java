@@ -23,17 +23,17 @@ public class ModeloImagen {
         return imagen;
     }
     
-     public static Imagen get(String id){
+     public static List<Imagen> get(int id){
         Session session=Utiles.getSessionFactory().openSession();
         session.beginTransaction();
-        /*String hql = "from Prueba where id="+id;
+        String hql = "from Imagen where IdInmueble="+id;
         Query q = session.createQuery(hql);
-        Prueba prueba = (Prueba)q.list().get(0);*/
-        Imagen inmueble = (Imagen) session.get(Imagen.class,Integer.parseInt(id));
+        //Imagen imagenes = (Imagen)q.list().get(2);
+        List <Imagen> imagenes =q.list();
         session.getTransaction().commit();
         session.flush();
         session.close();
-        return inmueble;
+        return imagenes;
     }
     
     public static void delete(String id){

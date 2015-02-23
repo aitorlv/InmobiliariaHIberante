@@ -38,7 +38,6 @@
                 %>
                
                       <tr>
-                     
                       <td><%= inmu.getLocalidad() %></td>
                       <td><%= inmu.getDireccion() %></td>
                       <td><%= inmu.getPrecio() %></td>
@@ -47,6 +46,7 @@
                       <td><a href="control?target=inmueble&op=delete&action=op&id=<%= inmu.getIdInmbule()%> ">Borrar</a></td>
                       <td><a href="control?target=inmueble&op=update&action=view&id=<%= inmu.getIdInmbule() %>">Editar</a></td>
                       <td><a href="control?target=imagen&op=select&action=view&id=<%= inmu.getIdInmbule() %>">Ver fotos</a></td>
+                      <td style="visibility: collapse; display: none"><%= inmu.getIdInmbule() %></td>
                       </tr>
                     
                  <%

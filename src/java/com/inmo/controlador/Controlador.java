@@ -100,6 +100,26 @@ public class Controlador extends HttpServlet {
                 inmu.setIdInmbule(Integer.parseInt(request.getParameter("id")));
                 ModeloInmueble.update(inmu);
                 destino="control?target=inmueble&op=select&action=view";
+            }else if(target.equals("inmueble") && op.equals("insert") && action.equals("opmovil")){
+                forward=false;
+                Inmueble inmu=new Inmueble();
+                Imagen img=new Imagen();
+                inmu.setLocalidad(request.getParameter("localidad"));
+                inmu.setDireccion(request.getParameter("direccion"));
+                inmu.setPrecio(request.getParameter("precio"));
+                inmu.setTipo(request.getParameter("tipo"));
+                inmu.setUsuario(request.getParameter("usuario"));
+                inmu.setIdAndroid(Integer.parseInt(request.getParameter("idAndroid")));
+                int identificador=ModeloInmueble.insert(inmu);
+                /*Part filePart = request.getPart("imagen"); // Retrieves <input type="file" name="file">
+                String fileName = getFileName(filePart);
+                InputStream fileContent = filePart.getInputStream();
+                String ruta = getServletContext().getRealPath("/") + "subido/";
+                guardarImagen(fileContent, fileName, ruta);
+                img.setInmueble(ModeloInmueble.get(identificador+""));
+                img.setRuta("subido/"+fileName);
+                ModeloImagen.insert(img);*/
+                destino="control?target=inmueble&op=select&action=view";
             }
             break;
             case "imagen":
@@ -116,6 +136,17 @@ public class Controlador extends HttpServlet {
                 forward=true;
                 destino="WEB-INF/imagenes/insert.jsp";
                 }else if(target.equals("imagen") && op.equals("insert") && action.equals("op")){
+                Part filePart = request.getPart("imagen"); // Retrieves <input type="file" name="file">
+                String fileName = getFileName(filePart);
+                InputStream fileContent = filePart.getInputStream();
+                String ruta = getServletContext().getRealPath("/") + "subido/";
+                guardarImagen(fileContent, fileName, ruta);
+                Imagen img=new Imagen();
+                img.setInmueble(ModeloInmueble.get( request.getParameter("id")));
+                img.setRuta("subido/"+fileName);
+                ModeloImagen.insert(img);
+                destino="control?target=imagen&op=select&action=view";
+                }else if(target.equals("imagen") && op.equals("insert") && action.equals("opmovil")){
                 Part filePart = request.getPart("imagen"); // Retrieves <input type="file" name="file">
                 String fileName = getFileName(filePart);
                 InputStream fileContent = filePart.getInputStream();

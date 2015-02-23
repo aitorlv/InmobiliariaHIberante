@@ -4,6 +4,7 @@
     Author     : aitor
 --%>
 
+<%@page import="com.inmo.modelo.ModeloImagen"%>
 <%@page import="com.inmo.hibernate.Imagen"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,12 +32,12 @@
                 </tr>
                 <%
                     
-                    List<Imagen> lista= (List) request.getAttribute("datos");
+                    List<Imagen> lista= (List) ModeloImagen.get(id);
+                    
                     for(Imagen imag :lista){  
                         
                         
                 %>
-               
                       <tr>
                      
                       <td><img src="<%= imag.getRuta() %>" width="100" height="100"></td>
